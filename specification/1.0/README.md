@@ -104,7 +104,27 @@ Typically every chunk corresponds to a separate tree structure.
 
 ## Bufferviews
 
+Bufferviews are pointers to parts of buffers. They 
+
 ## Buffers
+
+Buffers are used to story binary data. Imagine them as a concatenation of individual files. A single sdTF can reference multiple buffers. The actual data of a buffer can reside
+
+  * in a external binary file referenced by an uri, 
+  * embedded into the JSON metadata by means of a data uri, or
+  * appended directly to the JSON metadata in case of a [_binary sdTF_](#binary-sdtf-file-format-specification).
+
+### Examples
+
+#### External buffer
+
+```
+{
+  "bytelength": 1234,
+  "uri": "buffer.bin"
+}
+```
+
 
 ## Attributes
 
