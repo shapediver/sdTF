@@ -47,7 +47,7 @@ sdTF stores data items like primitives, 3D objects, images, PDF documents, as we
   * the tree structure used to organize data items
   * optional attributes attached to data items
 
-The metadata is stored in JSON format, while data items may either be embedded into the metadata (typically used for primitive data items), or stored in binary buffers which are referenced from the metadata. Metadata and binary buffers may either be kept in separate files, or merged into a single [_binary sdTF_](#binary-sdtf-file-format-specification). 
+The metadata is stored in JSON format, while data items may either be embedded into the metadata (typically used for primitive data items), or stored in binary buffers which are referenced from the metadata (3D objects, images, documents, arrays of numbers, other blobs). Metadata and binary buffers may either be kept in separate files, or merged into a single [_binary sdTF_](#binary-sdtf-file-format-specification). 
 
 ## Design goals
 
@@ -73,10 +73,28 @@ Major version updates are not expected to be compatible with previous versions.
 
 # Concepts
 
+sdTF metadata is stored in JSON format. This section describes the concepts used for the properties representing the metadata in JSON. A flat hierarchy is used, using numeric indices for refering between child items of top level attributes. 
+
 ## Asset
 
+This property must exist in any sdTF. It contains information about versioning, and optional information about the author and copyright. 
+
+Example (minimal sdTF): 
+
+```
+{
+  "asset": {
+    "generator": "ShapeDiverGltfV2Writer",
+    "copyright": "2021 (c) ShapeDiver GmbH",
+    "version": "1.0"
+  }
+}
+```
 
 ## Chunks
+
+Chunks use the same schema as nodes, the only difference being that they provide the entry points to the sdTF. 
+Typically every chunk corresponds to a separate tree structure. 
 
 ## Nodes
 
