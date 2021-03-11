@@ -91,44 +91,151 @@ Example (minimal sdTF):
 }
 ```
 
+## Attributes
+
+## Type hints
+
+## Nodes
+
+Trees in sdTF are made of nodes. Nodes can reference other nodes and/or data items. They can have an optional name, attributes, and a type hint. 
+Due to the flat hierarchy it's theoretically possible to create circular structures of nodes, but that's discouraged. 
+
+Examples: 
+
+### Node referencing data items
+
+```
+{
+  "items": [2,3,5],
+}
+```
+
+### Node referencing other nodes
+
+```
+{
+  "nodes": [7,11,13],
+}
+```
+
 ## Chunks
 
 Chunks use the same schema as nodes, the only difference being that they provide the entry points to the sdTF. 
 Typically every chunk corresponds to a separate tree structure. 
 
-## Nodes
+Example: In case we are storing several Grasshopper data trees in a sdTF, each data tree becomes a chunk. 
+The first level of nodes below a chunk corresponds to the branches of the tree. Each such node references a list of data items.
 
 ## Data items
 
+Data items serve as the leaves of trees defined by nodes. The actual data may be embedded directly, or a reference to an accessor. 
+
+Examples: 
+
+### Item referencing an accessor
+
+```
+{
+  "accessor": 0,
+  "typeHint": 0
+}
+```
+
+### Item embedding a value
+
+```
+{
+  "value": 42,
+  "typeHint": 0
+}
+```
+
+
 ## Accessors
+
+Accessors reference individual objects inside bufferviews. What they are referencing depends on the type of bufferview. In some cases they reference a complete bufferview.
+
+Examples: 
+
+### Geometric object in a 3dm file
+
+```
+{
+  "bufferView": 0,
+  "id": "64b723b9-2712-4f4e-a7ef-9c34cbf68289"
+}
+```
+
+### Image
+
+The accessor references a complete bufferview (in this case an image file).
+
+```
+{
+  "bufferView": 0
+}
+```
 
 ## Bufferviews
 
-Bufferviews are pointers to parts of buffers. They 
+A bufferview is a pointer to a portion of a buffer, it references a file or simply some binary data (e.g. a large list of numbers, or a large string). 
+The `byteOffset` and `byteLength` define the location of the bufferview inside the buffer. 
+
+Examples: 
+
+### Bufferview for a 3dm file
+
+```
+{
+  "buffer": 0,
+  "byteOffset": 0,
+  "byteLength": 5164,
+  "contentType": "model/vnd.3dm",
+  "contentEncoding": "gzip"
+}
+```
+
+### Bufferview for an image file
+
+```
+{
+  "buffer": 0,
+  "byteOffset": 0,
+  "byteLength": 2073,
+  "contentType": "image/png"
+}
+```
 
 ## Buffers
 
-Buffers are used to story binary data. Imagine them as a concatenation of individual files. A single sdTF can reference multiple buffers. The actual data of a buffer can reside
+Buffers are used to story binary data, imagine them as a concatenation of individual files (in fact: bufferviews). A single sdTF can reference multiple buffers. The actual data of a buffer can reside
 
   * in a external binary file referenced by an uri, 
   * embedded into the JSON metadata by means of a data uri, or
   * appended directly to the JSON metadata in case of a [_binary sdTF_](#binary-sdtf-file-format-specification).
 
-### Examples
+Examples:
 
-#### External buffer
+### External buffer
+
+Uris to external buffers are resolved relative, absolute uris can be used but are discouraged.
 
 ```
 {
-  "bytelength": 1234,
+  "byteLength": 1234,
   "uri": "buffer.bin"
 }
 ```
 
+### Attached buffer (binary sdTF)
 
-## Attributes
+In case of binary sdTF the first buffer in the list refers to the directly attached one, hence it only uses the `byteLength` property.
 
-## Type hints
+```
+{
+  "byteLength": 1234
+}
+```
 
 # Binary sdTF file format specification
 
