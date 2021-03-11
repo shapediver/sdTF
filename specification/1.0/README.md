@@ -91,10 +91,6 @@ Example (minimal sdTF):
 }
 ```
 
-## Attributes
-
-## Type hints
-
 ## Nodes
 
 Trees in sdTF are made of nodes. Nodes can reference other nodes and/or data items. They can have an optional name, attributes, and a type hint. 
@@ -234,6 +230,48 @@ In case of binary sdTF the first buffer in the list refers to the directly attac
 ```
 {
   "byteLength": 1234
+}
+```
+
+## Attributes
+
+Attributes are stored as dictionaries. They can be referenced by nodes, chunks, and data items. Attribute values can be directly embedded, or reference accessors. 
+
+Example: 
+
+```
+{
+  "Id": {
+    "value": "a4ae4774-a4de-4ac9-83d9-9879a98445e8",
+    "typeHint": 1
+  },
+  "Name": {
+    "value": "A",
+    "typeHint": 1
+  },
+  "Type": {
+    "value": "Number",
+    "typeHint": 1
+  }
+}
+```
+
+## Type hints
+
+Type hints are used to add information about the type of data items found below a specific node in the tree. They are also used for data items, allowing to know 
+about the type without reading binary data. 
+
+Example: 
+
+```
+{
+  "typeHints": [{
+    "name": "image"
+  }, {
+    "name": "guid"
+  }, {
+    "name": "string"
+  }]
 }
 ```
 
