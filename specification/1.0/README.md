@@ -364,7 +364,6 @@ You can download [the complete binary sdTF asset](assets/sdTF_spec_example.sdtf)
       }
     }
   ],
-  "version": 1,
   "typeHints": [{
       "name": "rhino.mesh"
     }, {
@@ -520,7 +519,7 @@ You can download [the complete binary sdTF asset](assets/sdTF_spec_example.sdtf)
   ],
   "asset": {
     "generator": "ShapeDiverSdtfWriter",
-    "version": 1
+    "version": "1.0"
   }
 }
 ```
@@ -531,6 +530,51 @@ You can download [the complete binary sdTF asset](assets/sdTF_spec_example.sdtf)
 
 # Properties reference
 
+---------------------------------------
+<a name="reference-fileinfo"></a>
+### fileinfo
 
+Metadata about the sdTF asset. 
+
+**Properties**
+
+|   |Type|Description|Required|
+|---|----|-----------|--------|
+|**copyright**|`string`|Copyright mark.|No|
+|**generator**|`string`|Hint to software package that generated the sdTF asset.|No|
+|**version**|`string`|The sdTF version used by this asset.|:white_check_mark: Yes|
+
+Additional properties are allowed.
+
+
+---------------------------------------
+<a name="reference-buffer"></a>
+### buffer
+
+A buffer is used to reference binary data. 
+
+**Properties**
+
+|   |Type|Description|Required|
+|---|----|-----------|--------|
+|**byteLength**|`integer`|Length of the buffer in bytes.|:white_check_mark: Yes|
+|**uri**|`string`|Uri to fetch buffer from.|No|
+
+Additional properties are allowed.
+
+#### buffer.byteLength :white_check_mark:
+
+Length of the buffer in bytes.
+
+* **Type**: `integer`
+* **Required**: Yes
+* **Minimum**: ` >= 0`
+
+#### buffer.uri
+
+Uri to fetch data from. Can be a data uri. Not set in case of the directly attached buffer used for _binary sdTF_.
+
+* **Type**: `string`
+* **Required**: No
 
 
