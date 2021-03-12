@@ -298,6 +298,12 @@ The following example shows the metadata of an sdTF asset containing 3 trees:
   * a tree called _Images_ containing a single branch with a single image
   * a tree called _Numbers_ containing two branches which are lists of numbers
 
+<p align="center">
+<img src="assets/sdTF_spec_example.png" />
+</p>
+
+You can download [the complete binary sdTF asset](assets/sdTF_spec_example.sdtf) and the [Grasshopper model that was used to create it (requires ShapeDiver plugin >= 2.0)](assets/sdTF_spec_example.ghx).
+
 ```
 {
   "attributes": [{
