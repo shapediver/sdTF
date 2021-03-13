@@ -578,3 +578,69 @@ Uri to fetch data from. Can be a data uri. Not set in case of the directly attac
 * **Required**: No
 
 
+---------------------------------------
+<a name="reference-buffer"></a>
+### bufferview
+
+A bufferview references a chunk of data in a buffer.
+
+**Properties**
+
+|   |Type|Description|Required|
+|---|----|-----------|--------|
+|**buffer**|`integer`|Index of the referenced buffer.|:white_check_mark: Yes|
+|**byteLength**|`integer`|Length of the bufferView in bytes.|:white_check_mark: Yes|
+|**byteOffset**|`integer`|Offset into the buffer in bytes.|:white_check_mark: Yes|
+|**contentEncoding**|`string`|Content-Encoding which was used to compress the data referenced by the buffer view.|No|
+|**contentType**|`string`|MIME type of data referenced by the buffer view.|:white_check_mark: Yes|
+|**name**|`string`|Optional name of the buffer view.|No|
+
+Additional properties are allowed.
+
+#### bufferview.buffer :white_check_mark:
+
+Index of the referenced buffer (0-based).
+
+* **Type**: `integer`
+* **Required**: Yes
+* **Minimum**: ` >= 0`
+
+#### buffer.byteLength :white_check_mark:
+
+Length of the bufferView in bytes.
+
+* **Type**: `integer`
+* **Required**: Yes
+* **Minimum**: ` >= 0`
+
+#### buffer.byteOffset :white_check_mark:
+
+Offset into the buffer in bytes.
+
+* **Type**: `integer`
+* **Required**: Yes
+* **Minimum**: ` >= 0`
+
+#### buffer.contentEncoding
+
+Content-Encoding which was used to compress the data referenced by the buffer view. 
+See [https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Encoding](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Encoding).
+
+* **Type**: `string`
+* **Required**: No
+
+#### buffer.contentType :white_check_mark:
+
+MIME type of data referenced by the buffer view.
+See [https://www.iana.org/assignments/media-types/media-types.xhtml](https://www.iana.org/assignments/media-types/media-types.xhtml)
+and [https://tools.ietf.org/html/rfc6838](https://tools.ietf.org/html/rfc6838)
+
+* **Type**: `string`
+* **Required**: Yes
+
+#### buffer.name
+
+Optional name of the buffer view
+
+* **Type**: `string`
+* **Required**: No
