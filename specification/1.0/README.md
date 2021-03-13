@@ -667,6 +667,24 @@ Optional name of the buffer view
 
 
 ---------------------------------------
+<a name="reference-fileinfo"></a>
+### fileinfo
+
+Metadata about the sdTF asset. 
+
+**Properties**
+
+|   |Type|Description|Required|
+|---|----|-----------|--------|
+|**copyright**|`string`|Copyright mark.|No|
+|**generator**|`string`|Hint to software package that generated the sdTF asset.|No|
+|**version**|`string`|The sdTF version used by this asset.|:white_check_mark: Yes|
+
+Additional properties are allowed.
+
+
+
+---------------------------------------
 <a name="reference-item"></a>
 ### item
 
@@ -677,7 +695,7 @@ Data items serve as the leaves of trees defined by nodes. The actual data may be
 |   |Type|Description|Required|
 |---|----|-----------|--------|
 |**accessor**|`integer`|Index to referenced accessor.|No|
-|**attributes**|`attributes`|Index to referenced attributes.|No|
+|**attributes**|`integer`|Index to referenced attributes.|No|
 |**typeHint**|`integer`|Index to referenced typehint.|No|
 |**value**|`any`|Embedded value.|No|
 
@@ -695,14 +713,14 @@ Index to referenced accessor. Both an embedded value and an accessor may be spec
 
 Index to referenced attributes.
 
-* **Type**: `attributes`
+* **Type**: `integer`
 * **Required**: No
 
 #### item.typeHint
 
 Index to referenced typehint. **Should** be specified in case the type of the item can not be deduced from the representation of it's embedded value, or from the content type of the bufferview referenced by the accessor. 
 
-* **Type**: `typehint`
+* **Type**: `integer`
 * **Required**: No
 
 #### item.value
@@ -715,20 +733,60 @@ Embedded value.
 
 
 ---------------------------------------
-<a name="reference-fileinfo"></a>
-### fileinfo
+<a name="reference-node"></a>
+### node
 
-Metadata about the sdTF asset. 
+Trees in sdTF are made of nodes. Nodes can reference other nodes and/or data items. 
 
 **Properties**
 
 |   |Type|Description|Required|
 |---|----|-----------|--------|
-|**copyright**|`string`|Copyright mark.|No|
-|**generator**|`string`|Hint to software package that generated the sdTF asset.|No|
-|**version**|`string`|The sdTF version used by this asset.|:white_check_mark: Yes|
+|**attributes**|`integer`|Index to referenced attributes.|No|
+|**items**|`integer[]`|Array of indices of child items.|No|
+|**name**|`string`|Optional name of node.|No|
+|**nodes**|`integer[]`|Array of indices of child nodes.|No|
+|**typeHint**|`integer`|Index to referenced typehint.|No|
 
 Additional properties are allowed.
+
+#### node.attributes
+
+Index to referenced attributes.
+
+* **Type**: `integer`
+* **Required**: No
+
+#### node.items
+
+Array of indices of child items.
+
+* **Type**: `integer[]`
+* **Required**: No
+
+#### node.name
+
+Optional name of node.
+
+* **Type**: `string`
+* **Required**: No
+
+#### node.nodes
+
+Array of indices of child nodes.
+
+* **Type**: `integer[]`
+* **Required**: No
+
+#### node.typeHint
+
+Index to referenced typehint. **Should** be specified in case the type hint for all child nodes and items is the same. **Must not** be specified otherwise.
+
+* **Type**: `integer`
+* **Required**: No
+
+
+
 
 
 
