@@ -530,21 +530,38 @@ You can download [the complete binary sdTF asset](assets/sdTF_spec_example.sdtf)
 
 # Properties reference
 
----------------------------------------
-<a name="reference-fileinfo"></a>
-### fileinfo
 
-Metadata about the sdTF asset. 
+---------------------------------------
+<a name="reference-accessor"></a>
+### accessor
+
+Accessors reference individual objects inside bufferviews. What they are referencing depends on the type of bufferview. In some cases they reference a complete bufferview. 
 
 **Properties**
 
 |   |Type|Description|Required|
 |---|----|-----------|--------|
-|**copyright**|`string`|Copyright mark.|No|
-|**generator**|`string`|Hint to software package that generated the sdTF asset.|No|
-|**version**|`string`|The sdTF version used by this asset.|:white_check_mark: Yes|
+|**bufferView**|`integer`|Id of the referenced bufferview.|:white_check_mark: Yes|
+|**id**|`string`|Id of the referenced object inside the bufferview.|No|
 
 Additional properties are allowed.
+
+#### accessor.bufferView :white_check_mark:
+
+Id of the referenced bufferview.
+
+* **Type**: `integer`
+* **Required**: Yes
+* **Minimum**: ` >= 0`
+
+#### accessor.id
+
+Id of the referenced object inside the bufferview. Used to reference individual objects in files that contain multiple objects. 
+The meaning of this id is specific to the content type of the bufferview (the file type).
+May be omitted in case the complete bufferview shall be referenced, e.g. in case of image files. 
+
+* **Type**: `string`
+* **Required**: No
 
 
 ---------------------------------------
@@ -579,7 +596,7 @@ Uri to fetch data from. Can be a data uri. Not set in case of the directly attac
 
 
 ---------------------------------------
-<a name="reference-buffer"></a>
+<a name="reference-bufferview"></a>
 ### bufferview
 
 A bufferview references a chunk of data in a buffer.
@@ -605,7 +622,7 @@ Index of the referenced buffer (0-based).
 * **Required**: Yes
 * **Minimum**: ` >= 0`
 
-#### buffer.byteLength :white_check_mark:
+#### bufferview.byteLength :white_check_mark:
 
 Length of the bufferView in bytes.
 
@@ -613,7 +630,7 @@ Length of the bufferView in bytes.
 * **Required**: Yes
 * **Minimum**: ` >= 0`
 
-#### buffer.byteOffset :white_check_mark:
+#### bufferview.byteOffset :white_check_mark:
 
 Offset into the buffer in bytes.
 
@@ -621,7 +638,7 @@ Offset into the buffer in bytes.
 * **Required**: Yes
 * **Minimum**: ` >= 0`
 
-#### buffer.contentEncoding
+#### bufferview.contentEncoding
 
 Content-Encoding which was used to compress the data referenced by the buffer view. 
 See [https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Encoding](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Encoding).
@@ -629,7 +646,7 @@ See [https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Encoding]
 * **Type**: `string`
 * **Required**: No
 
-#### buffer.contentType :white_check_mark:
+#### bufferview.contentType :white_check_mark:
 
 MIME type of data referenced by the buffer view.
 See [https://www.iana.org/assignments/media-types/media-types.xhtml](https://www.iana.org/assignments/media-types/media-types.xhtml)
@@ -638,9 +655,29 @@ and [https://tools.ietf.org/html/rfc6838](https://tools.ietf.org/html/rfc6838)
 * **Type**: `string`
 * **Required**: Yes
 
-#### buffer.name
+#### bufferview.name
 
 Optional name of the buffer view
 
 * **Type**: `string`
 * **Required**: No
+
+
+---------------------------------------
+<a name="reference-fileinfo"></a>
+### fileinfo
+
+Metadata about the sdTF asset. 
+
+**Properties**
+
+|   |Type|Description|Required|
+|---|----|-----------|--------|
+|**copyright**|`string`|Copyright mark.|No|
+|**generator**|`string`|Hint to software package that generated the sdTF asset.|No|
+|**version**|`string`|The sdTF version used by this asset.|:white_check_mark: Yes|
+
+Additional properties are allowed.
+
+
+
