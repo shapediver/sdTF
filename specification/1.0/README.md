@@ -564,6 +564,7 @@ May be omitted in case the complete bufferview shall be referenced, e.g. in case
 * **Required**: No
 
 
+
 ---------------------------------------
 <a name="reference-buffer"></a>
 ### buffer
@@ -593,6 +594,7 @@ Uri to fetch data from. Can be a data uri. Not set in case of the directly attac
 
 * **Type**: `string`
 * **Required**: No
+
 
 
 ---------------------------------------
@@ -661,6 +663,55 @@ Optional name of the buffer view
 
 * **Type**: `string`
 * **Required**: No
+
+
+
+---------------------------------------
+<a name="reference-item"></a>
+### item
+
+Data items serve as the leaves of trees defined by nodes. The actual data may be embedded directly, or a reference to an accessor. Data items can have optional attributes. 
+
+**Properties**
+
+|   |Type|Description|Required|
+|---|----|-----------|--------|
+|**accessor**|`integer`|Index to referenced accessor.|No|
+|**attributes**|`attributes`|Index to referenced attributes.|No|
+|**typeHint**|`integer`|Index to referenced typehint.|No|
+|**value**|`any`|Embedded value.|No|
+
+Additional properties are allowed.
+
+#### item.accessor
+
+Index to referenced accessor. Both an embedded value and an accessor may be specified, in which case the embedded value serves as preview.
+
+* **Type**: `integer`
+* **Required**: Yes
+* **Minimum**: ` >= 0`
+
+#### item.attributes
+
+Index to referenced attributes.
+
+* **Type**: `attributes`
+* **Required**: No
+
+#### item.typeHint
+
+Index to referenced typehint. **Should** be specified in case the type of the item can not be deduced from the representation of it's embedded value, or from the content type of the bufferview referenced by the accessor. 
+
+* **Type**: `typehint`
+* **Required**: No
+
+#### item.value
+
+Embedded value.
+
+* **Type**: `any`
+* **Required**: No
+
 
 
 ---------------------------------------
