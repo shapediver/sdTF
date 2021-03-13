@@ -667,6 +667,14 @@ Optional name of the buffer view
 
 
 ---------------------------------------
+<a name="reference-chunk"></a>
+### chunk
+
+Same as [node](#reference-node). 
+
+
+
+---------------------------------------
 <a name="reference-fileinfo"></a>
 ### fileinfo
 
@@ -787,6 +795,56 @@ Index to referenced typehint. **Should** be specified in case the type hint for 
 
 
 
+---------------------------------------
+<a name="reference-typehint"></a>
+### typehint
 
+Type hints are used to add information about the type of data items found below a specific node in the tree. 
 
+**Properties**
+
+|   |Type|Description|Required|
+|---|----|-----------|--------|
+|**name**|`string`|Name of the typehint.|:white_check_mark: Yes|
+
+Additional properties are allowed.
+
+#### typehint.name :white_check_mark:
+
+Name of the typehint
+
+* **Type**: `string`
+* **Required**: Yes
+* **Supported values** (extensible):
+  * bitmap
+  * boolean
+  * byte
+  * char
+  * color
+  * decimal
+  * double
+  * geometry.complex
+  * guid
+  * int16
+  * int32
+  * int64
+  * rhino.arccurve
+  * rhino.beziercurve
+  * rhino.brep
+  * rhino.curve
+  * rhino.extrusion
+  * rhino.linecurve
+  * rhino.mesh
+  * rhino.nurbscurve
+  * rhino.nurbssurface
+  * rhino.planesurface
+  * rhino.point
+  * rhino.polycurve
+  * rhino.polylinecurve
+  * sbyte
+  * single
+  * string
+  * uint16
+  * uint32
+  * uint64
 
