@@ -823,7 +823,28 @@ Name of the typehint
   * color
   * decimal
   * double
+  * geometry.arc
+  * geometry.boundingbox
+  * geometry.box
+  * geometry.circle
   * geometry.complex
+  * geometry.cone
+  * geometry.cylinder
+  * geometry.ellipse
+  * geometry.interval
+  * geometry.interval2
+  * geometry.line
+  * geometry.matrix
+  * geometry.plane
+  * geometry.point
+  * geometry.polyline
+  * geometry.ray
+  * geometry.rectangle
+  * geometry.sphere
+  * geometry.torus
+  * geometry.transform
+  * geometry.vector
+  * grasshopper.path
   * guid
   * int16
   * int32
