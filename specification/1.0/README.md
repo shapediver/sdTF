@@ -31,6 +31,17 @@ Copyright (C) 2020-2021 ShapeDiver GmbH. All Rights Reserved.
 * [A complete example](#a-complete-example)
 * [Binary sdTF file format specification](#binary-sdtf-file-format-specification)
 * [Properties reference](#properties-reference)
+  * [accessor](#reference-accessor)
+  * [attributes](#reference-attributes)
+  * [buffer](#reference-buffer)
+  * [bufferview](#reference-bufferview)
+  * [chunk](#reference-chunk)
+  * [fileinfo](#reference-fileinfo)
+  * [item](#reference-item)
+  * [node](#reference-node)
+  * [sdTF (root object)](#reference-sdTF)
+  * [typehint](#reference-typehint)
+
 
 
 # Introduction
