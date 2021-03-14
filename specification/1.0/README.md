@@ -566,6 +566,20 @@ May be omitted in case the complete bufferview shall be referenced, e.g. in case
 
 
 ---------------------------------------
+<a name="reference-attributes"></a>
+### attributes
+
+Attributes are stored as dictionaries, mapping an arbitrary number of attribute names to their values, where the values are represented as [items](#reference-item). 
+
+|   |Type|Description|Required|
+|---|----|-----------|--------|
+|name of attribute as `string`|[`item`](#reference-item)|Id of the referenced bufferview.|No|
+
+Each property of an `attributes` object corresponds to a key-value pair, further properties are not allowed.
+
+
+
+---------------------------------------
 <a name="reference-buffer"></a>
 ### buffer
 
