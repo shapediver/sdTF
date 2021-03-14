@@ -530,6 +530,17 @@ You can download [the complete binary sdTF asset](assets/sdTF_spec_example.sdtf)
 
 # Properties reference
 
+* [accessor](#reference-accessor)
+* [attributes](#reference-attributes)
+* [buffer](#reference-buffer)
+* [bufferview](#reference-bufferview)
+* [chunk](#reference-chunk)
+* [fileinfo](#reference-fileinfo)
+* [item](#reference-item)
+* [node](#reference-node)
+* [sdTF (root object)](#reference-sdTF)
+* [typehint](#reference-typehint)
+
 
 ---------------------------------------
 <a name="reference-accessor"></a>
@@ -562,6 +573,30 @@ May be omitted in case the complete bufferview shall be referenced, e.g. in case
 
 * **Type**: `string`
 * **Required**: No
+
+
+
+---------------------------------------
+<a name="reference-sdTF"></a>
+### sdTF (root object)
+
+The root object of an sdTF asset.
+
+**Properties**
+
+|   |Type|Description|Required|
+|---|----|-----------|--------|
+|**accessors**|[`accessor[]`](#reference-accessor)|Array of accessors.|No|
+|**asset**|[`fileinfo`](#reference-fileinfo)|Metadata about the asset.|:white_check_mark: Yes|
+|**attributes**|[`attributes[]`](#reference-attributes)|Array of attributes.|No|
+|**buffers**|[`buffer[]`](#reference-buffer)|Array of buffers.|No|
+|**bufferViews**|[`bufferView[]`](#reference-bufferView)|Array of bufferviews.|No|
+|**chunks**|[`chunk[]`](#reference-chunk)|Array of chunks.|No|
+|**items**|[`item[]`](#reference-item)|Array of items.|No|
+|**nodes**|[`node[]`](#reference-node)|Array of nodes.|No|
+|**typeHints**|[`typeHint[]`](#reference-typeHint)|Array of type hints.|No|
+
+Additional properties are allowed.
 
 
 
