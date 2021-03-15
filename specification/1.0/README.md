@@ -1,4 +1,4 @@
-Version 1.0
+![version](https://img.shields.io/badge/version-1.0-blueviolet.svg)
 
 The Structured Data Transfer Format (sdTF) is an API-neutral exchange and storage format for trees of data items as used by parametric 3D modeling software like [Grasshopper®](https://www.grasshopper3d.com/).
 
@@ -91,7 +91,7 @@ sdTF metadata is stored in JSON format. This section describes the concepts used
 
 This property must exist in any sdTF. It contains information about versioning, and optional information about the author and copyright. 
 
-Example (minimal sdTF): 
+### Example: minimal sdTF
 
 ```
 {
@@ -105,12 +105,10 @@ Example (minimal sdTF):
 
 ## Nodes
 
-Trees in sdTF are made of nodes. Nodes can reference other nodes and/or data items. They can have an optional name, optional attributes, and an optional type hint. 
+Trees in sdTF are made of nodes. Nodes can reference other `nodes` and/or data `items`. They can have an optional `name`, optional `attributes`, and an optional `typeHint`. 
 Due to the flat hierarchy it's theoretically possible to create circular structures of nodes, but that's discouraged. 
 
-Examples: 
-
-### Node referencing data items
+### Example: Node referencing data items
 
 ```
 {
@@ -120,7 +118,7 @@ Examples:
 }
 ```
 
-### Node referencing other nodes
+### Example: Node referencing other nodes
 
 ```
 {
@@ -143,9 +141,7 @@ The first level of nodes below a chunk corresponds to the branches of the tree. 
 
 Data items serve as the leaves of trees defined by nodes. The actual data may be embedded directly, or a reference to an accessor. Data items can have optional attributes.
 
-Examples: 
-
-### Item referencing an accessor
+### Example: Item referencing an accessor
 
 ```
 {
@@ -154,7 +150,7 @@ Examples:
 }
 ```
 
-### Item embedding a value
+### Example: Item embedding a value
 
 ```
 {
@@ -163,14 +159,11 @@ Examples:
 }
 ```
 
-
 ## Accessors
 
 Accessors reference individual objects inside bufferviews. What they are referencing depends on the type of bufferview. In some cases they reference a complete bufferview.
 
-Examples: 
-
-### Geometric object in a 3dm file
+### Example: Geometric object in a 3dm file
 
 ```
 {
@@ -179,7 +172,7 @@ Examples:
 }
 ```
 
-### Image
+### Example: Image
 
 The accessor references a complete bufferview (in this case an image file).
 
@@ -194,9 +187,7 @@ The accessor references a complete bufferview (in this case an image file).
 A bufferview is a pointer to a portion of a buffer, it references a file or simply some binary data (e.g. a large list of numbers, or a large string). 
 The `byteOffset` and `byteLength` define the location of the bufferview inside the buffer. 
 
-Examples: 
-
-### Bufferview for a 3dm file
+### Example: Bufferview for a 3dm file
 
 ```
 {
@@ -208,7 +199,7 @@ Examples:
 }
 ```
 
-### Bufferview for an image file
+### Example: Bufferview for an image file
 
 ```
 {
@@ -227,9 +218,7 @@ Buffers are used to story binary data, imagine them as a concatenation of indivi
   * embedded into the JSON metadata by means of a data uri, or
   * appended directly to the JSON metadata in case of a [_binary sdTF_](#binary-sdtf-file-format-specification).
 
-Examples:
-
-### External buffer
+### Example: External buffer
 
 Uris to external buffers are resolved relative, absolute uris can be used but are discouraged.
 
@@ -240,7 +229,7 @@ Uris to external buffers are resolved relative, absolute uris can be used but ar
 }
 ```
 
-### Attached buffer (binary sdTF)
+### Example: Attached buffer (binary sdTF)
 
 In case of binary sdTF the first buffer in the list refers to the directly attached one, hence it only uses the `byteLength` property.
 
@@ -254,7 +243,7 @@ In case of binary sdTF the first buffer in the list refers to the directly attac
 
 Attributes are stored as dictionaries. They can be referenced by nodes, chunks, and data items. Attribute values can be directly embedded, or reference accessors. 
 
-Example: 
+### Example
 
 ```
 {
@@ -282,7 +271,7 @@ Example:
 Type hints are used to add information about the type of data items found below a specific node in the tree. They are also used for data items, allowing to know 
 about the type without reading binary data. 
 
-Example: 
+### Example
 
 ```
 {
@@ -928,4 +917,3 @@ Name of the typehint
   * uint16
   * uint32
   * uint64
-
