@@ -2,11 +2,12 @@
 
 The Structured Data Transfer Format (sdTF) is an API-neutral exchange and storage format for trees of data items as used by parametric 3D modeling software like [Grasshopper®](https://www.grasshopper3d.com/).
 
-Last Updated: March 10, 2021
+Last Updated: March 17, 2021
 
 Editors
 
   * Alexander Schiftner, [ShapeDiver](https://www.shapediver.com)
+  * Emil Poulsen, [CORE studio](http://core.thorntontomasetti.com/)
 
 Copyright (C) 2020-2021 ShapeDiver GmbH. All Rights Reserved.
 
@@ -30,6 +31,13 @@ Copyright (C) 2020-2021 ShapeDiver GmbH. All Rights Reserved.
   * [Type hints](#type-hints)
 * [A complete example](#a-complete-example)
 * [Binary sdTF file format specification](#binary-sdtf-file-format-specification)
+   * [Magic](#binary-sdtf-magic)
+   * [Version](#binary-sdtf-version)
+   * [Total length](#binary-sdtf-total-length)
+   * [Content length](#binary-sdtf-content-length)
+   * [Content format](#binary-sdtf-content-format)
+   * [Content string](#binary-sdtf-content-string)
+   * [Binary](#binary-sdtf-binary)
 * [Properties reference](#properties-reference)
   * [accessor](#reference-accessor)
   * [attributes](#reference-attributes)
@@ -535,6 +543,46 @@ You can download [the complete binary sdTF asset](assets/sdTF_spec_example.sdtf)
 
 # Binary sdTF file format specification
 
+The binary sdTF file consists of three parts:
+
+- a 20 byte long binary header containing meta data about the file (little endian).
+- a content json of arbitrary length describing the data structure of the payload.
+- a binary blob attached at the end of the file containing the payload.
+
+See section [A Complete Example](#a-complete-example) to download a sample sdTF binary file, and see below for a diagram and descriptions of the individual parts.
+
+![Binary sdTF Content](assets/binary-sdtf-content.png)  
+_Visual representation of the different components of the sdTF file_
+
+The following sections describe each component in more detail.
+
+<a name="binary-sdtf-magic"></a>
+### Magic
+A 4 byte ASCII encoded string “sdTF“ representing an identifier of the binary. It can be used to identify a file as binary sdTF.
+
+<a name="binary-sdtf-version"></a>
+### Version
+ A 4 byte uint indicating the version of the binary sdTF format (currently 1). This version is relevant for the binary format and how to deconstruct the other parts.
+
+<a name="binary-sdtf-total-length"></a>
+ ### Total length
+A 4 byte uint representing the total length of the binary sdTF file.
+
+<a name="binary-sdtf-content-length"></a>
+ ### Content length
+A 4 byte int representing the total length of the content string.
+
+<a name="binary-sdtf-content-format"></a>
+ ### Content format
+A 4 byte int indicating an identifier for the content string format. 0 for JSON.
+
+<a name="binary-sdtf-content-string"></a>
+ ### Content string
+ A string of arbitrary length describing the content of the sdTF file. In the case of JSON (i.e. if the content format indicates 0), this will be UTF8 encoded. See section [Concept](#concepts) for detailed information and section [A Complete Example](#a-complete-example) to see an example json.
+
+<a name="binary-sdtf-binary"></a>
+ ### Binary
+ Contains the binary payload for geometry, bitmaps and other “heavy“ data types.
 
 # Properties reference
 
