@@ -110,6 +110,8 @@ Due to the flat hierarchy it's theoretically possible to create circular structu
 
 ### Example: Node referencing data items
 
+A node element of the [type](#reference-typehint) specified at typeHint[2], consisting of 13 elements.
+
 ```
 {
   "name": "[0,0]",
@@ -119,6 +121,8 @@ Due to the flat hierarchy it's theoretically possible to create circular structu
 ```
 
 ### Example: Node referencing other nodes
+
+A node element of the [type](#reference-typehint) specified at typeHint[0], referencing [nodes](#reference-node) that are defined at nodes[0] and nodes[1].
 
 ```
 {
@@ -141,15 +145,6 @@ The first level of nodes below a chunk corresponds to the branches of the tree. 
 
 Data items serve as the leaves of trees defined by nodes. The actual data may be embedded directly, or a reference to an accessor. Data items can have optional attributes.
 
-### Example: Item referencing an accessor
-
-```
-{
-  "accessor": 0,
-  "typeHint": 0
-}
-```
-
 ### Example: Item embedding a value
 
 ```
@@ -159,54 +154,14 @@ Data items serve as the leaves of trees defined by nodes. The actual data may be
 }
 ```
 
-## Accessors
+### Example: Item referencing an accessor
 
-Accessors reference individual objects inside bufferviews. What they are referencing depends on the type of bufferview. In some cases they reference a complete bufferview.
-
-### Example: Geometric object in a 3dm file
+An item representing some binary data, that is stored inside of a [buffer](#reference-buffer), by referencing an [accessor](#reference-accessor) element.
 
 ```
 {
-  "bufferView": 0,
-  "id": "64b723b9-2712-4f4e-a7ef-9c34cbf68289"
-}
-```
-
-### Example: Image
-
-The accessor references a complete bufferview (in this case an image file).
-
-```
-{
-  "bufferView": 0
-}
-```
-
-## Bufferviews
-
-A bufferview is a pointer to a portion of a buffer, it references a file or simply some binary data (e.g. a large list of numbers, or a large string). 
-The `byteOffset` and `byteLength` define the location of the bufferview inside the buffer. 
-
-### Example: Bufferview for a 3dm file
-
-```
-{
-  "buffer": 0,
-  "byteOffset": 0,
-  "byteLength": 5164,
-  "contentType": "model/vnd.3dm",
-  "contentEncoding": "gzip"
-}
-```
-
-### Example: Bufferview for an image file
-
-```
-{
-  "buffer": 0,
-  "byteOffset": 0,
-  "byteLength": 2073,
-  "contentType": "image/png"
+  "accessor": 0,
+  "typeHint": 0
 }
 ```
 
@@ -236,6 +191,59 @@ In case of binary sdTF the first buffer in the list refers to the directly attac
 ```
 {
   "byteLength": 2358119
+}
+```
+
+## Bufferviews
+
+A bufferview is a pointer to a portion of a buffer, it references a file or simply some binary data (e.g. a large list of numbers, or a large string). 
+The `byteOffset` and `byteLength` define the location of the bufferview inside the buffer. 
+
+### Example: Bufferview for a 3dm file
+
+```
+{
+  "buffer": 0,
+  "byteOffset": 0,
+  "byteLength": 5164,
+  "contentType": "model/vnd.3dm",
+  "contentEncoding": "gzip"
+}
+```
+
+### Example: Image
+
+The accessor references a complete bufferview (in this case an image file).
+
+```
+{
+  "bufferView": 0
+}
+```
+
+### Example: Bufferview for an image file
+
+```
+{
+  "buffer": 0,
+  "byteOffset": 0,
+  "byteLength": 2073,
+  "contentType": "image/png"
+}
+```
+
+## Accessors
+
+Accessors reference individual objects inside bufferviews. What they are referencing depends on the type of bufferview. In some cases they reference a complete bufferview.
+
+### Example: Geometric object in a 3dm file
+
+Referencing an individual object located in [bufferViews[0]](#reference-buffer) via its id.
+
+```
+{
+  "bufferView": 0,
+  "id": "64b723b9-2712-4f4e-a7ef-9c34cbf68289"
 }
 ```
 
@@ -577,30 +585,6 @@ May be omitted in case the complete bufferview shall be referenced, e.g. in case
 
 
 ---------------------------------------
-<a name="reference-sdTF"></a>
-### sdTF (root object)
-
-The root object of an sdTF asset.
-
-**Properties**
-
-|   |Type|Description|Required|
-|---|----|-----------|--------|
-|**accessors**|[`accessor[]`](#reference-accessor)|Array of accessors.|No|
-|**asset**|[`fileinfo`](#reference-fileinfo)|Metadata about the asset.|:white_check_mark: Yes|
-|**attributes**|[`attributes[]`](#reference-attributes)|Array of attributes.|No|
-|**buffers**|[`buffer[]`](#reference-buffer)|Array of buffers.|No|
-|**bufferViews**|[`bufferView[]`](#reference-bufferView)|Array of bufferviews.|No|
-|**chunks**|[`chunk[]`](#reference-chunk)|Array of chunks.|No|
-|**items**|[`item[]`](#reference-item)|Array of items.|No|
-|**nodes**|[`node[]`](#reference-node)|Array of nodes.|No|
-|**typeHints**|[`typeHint[]`](#reference-typeHint)|Array of type hints.|No|
-
-Additional properties are allowed.
-
-
-
----------------------------------------
 <a name="reference-attributes"></a>
 ### attributes
 
@@ -841,6 +825,30 @@ Index to referenced typehint. **Should** be specified in case the type hint for 
 
 * **Type**: `integer`
 * **Required**: No
+
+
+
+---------------------------------------
+<a name="reference-sdTF"></a>
+### sdTF (root object)
+
+The root object of an sdTF asset.
+
+**Properties**
+
+|   |Type|Description|Required|
+|---|----|-----------|--------|
+|**accessors**|[`accessor[]`](#reference-accessor)|Array of accessors.|No|
+|**asset**|[`fileinfo`](#reference-fileinfo)|Metadata about the asset.|:white_check_mark: Yes|
+|**attributes**|[`attributes[]`](#reference-attributes)|Array of attributes.|No|
+|**buffers**|[`buffer[]`](#reference-buffer)|Array of buffers.|No|
+|**bufferViews**|[`bufferView[]`](#reference-bufferView)|Array of bufferviews.|No|
+|**chunks**|[`chunk[]`](#reference-chunk)|Array of chunks.|No|
+|**items**|[`item[]`](#reference-item)|Array of items.|No|
+|**nodes**|[`node[]`](#reference-node)|Array of nodes.|No|
+|**typeHints**|[`typeHint[]`](#reference-typeHint)|Array of type hints.|No|
+
+Additional properties are allowed.
 
 
 
