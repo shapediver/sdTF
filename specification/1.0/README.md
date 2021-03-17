@@ -2,7 +2,7 @@
 
 The Structured Data Transfer Format (sdTF) is an API-neutral exchange and storage format for trees of data items as used by parametric 3D modeling software like [Grasshopper®](https://www.grasshopper3d.com/).
 
-Last Updated: March 10, 2021
+Last Updated: March 17, 2021
 
 Editors
 
