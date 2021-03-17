@@ -7,6 +7,7 @@ Last Updated: March 17, 2021
 Editors
 
   * Alexander Schiftner, [ShapeDiver](https://www.shapediver.com)
+  * Emil Poulsen, [CORE studio](http://core.thorntontomasetti.com/)
 
 Copyright (C) 2020-2021 ShapeDiver GmbH. All Rights Reserved.
 
