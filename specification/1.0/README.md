@@ -543,13 +543,13 @@ You can download [the complete binary sdTF asset](assets/sdTF_spec_example.sdtf)
 
 # Binary sdTF file format specification
 
-In broad strokes, a binary sdTF file consists of three parts:
+The binary sdTF file consists of three parts:
 
 - a 20 byte long binary header containing meta data about the file (little endian).
 - a content json of arbitrary length describing the data structure of the payload.
 - a binary blob attached at the end of the file containing the payload.
 
-See below for a diagram and descriptions of the individual parts.
+See section [A Complete Example](#a-complete-example) to download a sample sdTF binary file, and see below for a diagram and descriptions of the individual parts.
 
 ![Binary sdTF Content](assets/binary-sdtf-content.png)  
 _Visual representation of the different components of the sdTF file_
