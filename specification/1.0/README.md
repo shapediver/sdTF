@@ -21,12 +21,12 @@ Copyright (C) 2020-2021 ShapeDiver GmbH. All Rights Reserved.
   * [File extensions and MIME types](#file-extensions-and-mime-types)
 * [Concepts](#concepts)
   * [Asset](#asset)
-  * [Chunks](#chunks)
   * [Nodes](#nodes)
+  * [Chunks](#chunks)
   * [Data items](#data-items)
-  * [Accessors](#accessors)
-  * [Bufferviews](#bufferviews)
   * [Buffers](#buffers)
+  * [Bufferviews](#bufferviews)
+  * [Accessors](#accessors)
   * [Attributes](#attributes)
   * [Type hints](#type-hints)
 * [A complete example](#a-complete-example)
@@ -545,20 +545,20 @@ You can download [the complete binary sdTF asset](assets/sdTF_spec_example.sdtf)
 
 The binary sdTF file consists of three parts:
 
-- a 20 byte long binary header containing meta data about the file (little endian).
-- a content json of arbitrary length describing the data structure of the payload.
-- a binary blob attached at the end of the file containing the payload.
+- a 20 byte long binary header describing the contents of the binary sdTF file (little endian).
+- a content string: the metadata as described in section [Concepts](#concepts).
+- a binary blob attached at the end of the file, containing the data of the first buffer referenced from the metadata (see [Example: Attached buffer (binary sdTF)](example-attached-buffer-binary-sdtf)).
 
-See section [A Complete Example](#a-complete-example) to download a sample sdTF binary file, and see below for a diagram and descriptions of the individual parts.
+See section [A complete example](#a-complete-example) to download a sample binary sdTF file, and see below for a diagram and descriptions of the individual parts.
 
 ![Binary sdTF Content](assets/binary-sdtf-content.png)  
-_Visual representation of the different components of the sdTF file_
+_Visual representation of the different parts of the sdTF file_
 
-The following sections describe each component in more detail.
+The following sections describe each par in more detail.
 
 <a name="binary-sdtf-magic"></a>
 ### Magic
-A 4 byte ASCII encoded string “sdTF“ representing an identifier of the binary. It can be used to identify a file as binary sdTF.
+A 4 byte ASCII encoded string “sdTF“ representing an identifier of the binary sdTF file type. It can be used to identify a file as binary sdTF.
 
 <a name="binary-sdtf-version"></a>
 ### Version
@@ -574,15 +574,15 @@ A 4 byte int representing the total length of the content string.
 
 <a name="binary-sdtf-content-format"></a>
  ### Content format
-A 4 byte int indicating an identifier for the content string format. 0 for JSON.
+A 4 byte uint indicating an identifier for the content string format. 0 for JSON.
 
 <a name="binary-sdtf-content-string"></a>
  ### Content string
- A string of arbitrary length describing the content of the sdTF file. In the case of JSON (i.e. if the content format indicates 0), this will be UTF8 encoded. See section [Concept](#concepts) for detailed information and section [A Complete Example](#a-complete-example) to see an example json.
+ A string of arbitrary length describing the metadata of the sdTF asset. In the case of JSON (i.e. if the [content format](binary-sdtf-content-format) indicates 0), this will be UTF8 encoded. See section [Concepts](#concepts) for detailed information and section [A complete example](#a-complete-example) to see an example json.
 
 <a name="binary-sdtf-binary"></a>
  ### Binary
- Contains the binary payload for geometry, bitmaps and other “heavy“ data types.
+ Contains the data of the first buffer referenced from the metadata (see [Example: Attached buffer (binary sdTF)](example-attached-buffer-binary-sdtf)).
 
 # Properties reference
 
