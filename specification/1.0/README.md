@@ -578,7 +578,7 @@ A 4 byte uint indicating an identifier for the content string format. 0 for JSON
 
 <a name="binary-sdtf-content-string"></a>
  ### Content string
- A string of arbitrary length describing the metadata of the sdTF asset. In the case of JSON (i.e. if the [content format](binary-sdtf-content-format) indicates 0), this will be UTF8 encoded. See section [Concepts](#concepts) for detailed information and section [A complete example](#a-complete-example) to see an example json.
+ A string of arbitrary length describing the metadata of the sdTF asset. In the case of JSON (i.e. if the [content format](#binary-sdtf-content-format) indicates 0), this will be UTF8 encoded. See section [Concepts](#concepts) for detailed information and section [A complete example](#a-complete-example) to see an example json.
 
 <a name="binary-sdtf-binary"></a>
  ### Binary
