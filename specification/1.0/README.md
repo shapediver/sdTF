@@ -584,7 +584,6 @@ A 4 byte int indicating an identifier for the content string format. 0 for JSON.
  ### Binary
  Contains the binary payload for geometry, bitmaps and other “heavy“ data types.
 
-
 # Properties reference
 
 * [accessor](#reference-accessor)
