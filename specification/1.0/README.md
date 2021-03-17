@@ -553,21 +553,23 @@ See below for a diagram and descriptions of the individual parts.
 ![Binary sdTF Content](assets/binary-sdtf-content.png)  
 _Visual representation of the different components of the sdTF file_
 
+The following sections describe each component in more detail.
+
 <a name="binary-sdtf-magic"></a>
 ### Magic
-A 4 byte ASCII encoded string “sdTF“ representing an identifier of the binary. Can be used to identify a file as binary sdTF.
+A 4 byte ASCII encoded string “sdTF“ representing an identifier of the binary. It can be used to identify a file as binary sdTF.
 
 <a name="binary-sdtf-version"></a>
 ### Version
- a 4 byte uint indicating the version of the binary sdTF format (currently 1). This version is relevant for the binary format and how to deconstruct the other parts.
+ A 4 byte uint indicating the version of the binary sdTF format (currently 1). This version is relevant for the binary format and how to deconstruct the other parts.
 
 <a name="binary-sdtf-total-length"></a>
  ### Total length
-a 4 byte uint representing the total length of the binary sdTF file.
+A 4 byte uint representing the total length of the binary sdTF file.
 
 <a name="binary-sdtf-content-length"></a>
  ### Content length
-a 4 byte int representing the total length of the content string.
+A 4 byte int representing the total length of the content string.
 
 <a name="binary-sdtf-content-format"></a>
  ### Content format
@@ -575,7 +577,7 @@ A 4 byte int indicating an identifier for the content string format. 0 for JSON.
 
 <a name="binary-sdtf-content-string"></a>
  ### Content string
- A string of arbitrary length describing the content of the sdTF file. In the case of JSON (i.e. if the content format indicates 0), this will be UTF8 encoded. See next section for detailed information and an example. 
+ A string of arbitrary length describing the content of the sdTF file. In the case of JSON (i.e. if the content format indicates 0), this will be UTF8 encoded. See section [Concept](#concepts) for detailed information and section [A Complete Example](#a-complete-example) to see an example json.
 
 <a name="binary-sdtf-binary"></a>
  ### Binary
