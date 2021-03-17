@@ -542,7 +542,7 @@ You can download [the complete binary sdTF asset](assets/sdTF_spec_example.sdtf)
 
 # Binary sdTF file format specification
 
-In broad strokes, a binary Sdtf file consists of three parts:
+In broad strokes, a binary sdTF file consists of three parts:
 
 - a 20 byte long binary header containing meta data about the file (little endian).
 - a content json of arbitrary length describing the data structure of the payload.
@@ -550,20 +550,20 @@ In broad strokes, a binary Sdtf file consists of three parts:
 
 See below for a diagram and descriptions of the individual parts.
 
-![Binary Sdtf Content](assets/binary-sdtf-content.png)  
-_Visual representation of the different components of the Sdtf file_
+![Binary sdTF Content](assets/binary-sdtf-content.png)  
+_Visual representation of the different components of the sdTF file_
 
 <a name="binary-sdtf-magic"></a>
 ### Magic
-A 4 byte ASCII encoded string “sdtf“ representing an identifier of the binary. Can be used to identify a file as binary Sdtf.
+A 4 byte ASCII encoded string “sdTF“ representing an identifier of the binary. Can be used to identify a file as binary sdTF.
 
 <a name="binary-sdtf-version"></a>
 ### Version
- a 4 byte uint indicating the version of the binary Sdtf format (currently 1). This version is relevant for the binary format and how to deconstruct the other parts.
+ a 4 byte uint indicating the version of the binary sdTF format (currently 1). This version is relevant for the binary format and how to deconstruct the other parts.
 
 <a name="binary-sdtf-total-length"></a>
  ### Total length
-a 4 byte uint representing the total length of the binary Sdtf file.
+a 4 byte uint representing the total length of the binary sdTF file.
 
 <a name="binary-sdtf-content-length"></a>
  ### Content length
@@ -575,7 +575,7 @@ A 4 byte int indicating an identifier for the content string format. 0 for JSON.
 
 <a name="binary-sdtf-content-string"></a>
  ### Content string
- A string of arbitrary length describing the content of the Sdtf file. In the case of JSON (i.e. if the content format indicates 0), this will be UTF8 encoded. See next section for detailed information and an example. 
+ A string of arbitrary length describing the content of the sdTF file. In the case of JSON (i.e. if the content format indicates 0), this will be UTF8 encoded. See next section for detailed information and an example. 
 
 <a name="binary-sdtf-binary"></a>
  ### Binary
