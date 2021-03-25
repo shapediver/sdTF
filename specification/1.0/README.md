@@ -8,6 +8,7 @@ Editors
 
   * Alexander Schiftner, [ShapeDiver](https://www.shapediver.com)
   * Emil Poulsen, [CORE studio](http://core.thorntontomasetti.com/)
+  * Matthias Reisacher, [ShapeDiver](https://www.shapediver.com)
 
 Copyright (C) 2020-2021 ShapeDiver GmbH. All Rights Reserved.
 
