@@ -193,6 +193,7 @@ Uris to external buffers are resolved relative, absolute uris can be used but ar
 }
 ```
 
+<a name="example-attached-buffer-binary-sdtf"></a>
 ### Example: Attached buffer (binary sdTF)
 
 In case of binary sdTF the first buffer in the list refers to the directly attached one, hence it only uses the `byteLength` property.
@@ -555,7 +556,7 @@ See section [A complete example](#a-complete-example) to download a sample binar
 ![Binary sdTF Content](assets/binary-sdtf-content.png)  
 _Visual representation of the different parts of the sdTF file_
 
-The following sections describe each par in more detail.
+The following sections describe each part in more detail.
 
 <a name="binary-sdtf-magic"></a>
 ### Magic
