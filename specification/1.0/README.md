@@ -549,7 +549,7 @@ The binary sdTF file consists of three parts:
 
 - a 20 byte long binary header describing the contents of the binary sdTF file (little endian).
 - a content string: the metadata as described in section [Concepts](#concepts).
-- a binary blob attached at the end of the file, containing the data of the first buffer referenced from the metadata (see [Example: Attached buffer (binary sdTF)](example-attached-buffer-binary-sdtf)).
+- a binary blob attached at the end of the file, containing the data of the first buffer referenced from the metadata (see [Example: Attached buffer (binary sdTF)](#example-attached-buffer-binary-sdtf)).
 
 See section [A complete example](#a-complete-example) to download a sample binary sdTF file, and see below for a diagram and descriptions of the individual parts.
 
@@ -584,7 +584,7 @@ A 4 byte uint indicating an identifier for the content string format. 0 for JSON
 
 <a name="binary-sdtf-binary"></a>
  ### Binary
- Contains the data of the first buffer referenced from the metadata (see [Example: Attached buffer (binary sdTF)](example-attached-buffer-binary-sdtf)).
+ Contains the data of the first buffer referenced from the metadata (see [Example: Attached buffer (binary sdTF)](#example-attached-buffer-binary-sdtf)).
 
 # Properties reference
 
