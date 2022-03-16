@@ -42,6 +42,7 @@ Copyright (C) 2020-2021 ShapeDiver GmbH. All Rights Reserved.
 * [Properties reference](#properties-reference)
   * [accessor](#reference-accessor)
   * [attributes](#reference-attributes)
+  * [attributevalue](reference-attributevalue)
   * [buffer](#reference-buffer)
   * [bufferview](#reference-bufferview)
   * [chunk](#reference-chunk)
@@ -590,6 +591,7 @@ A 4 byte uint indicating an identifier for the content string format. 0 for JSON
 
 * [accessor](#reference-accessor)
 * [attributes](#reference-attributes)
+* [attributevalue](#reference-attributevalue)
 * [buffer](#reference-buffer)
 * [bufferview](#reference-bufferview)
 * [chunk](#reference-chunk)
@@ -638,13 +640,54 @@ May be omitted in case the complete bufferview shall be referenced, e.g. in case
 <a name="reference-attributes"></a>
 ### attributes
 
-Attributes are stored as dictionaries, mapping an arbitrary number of attribute names to their values, where the values are represented as [items](#reference-item). 
+Attributes are stored as dictionaries, mapping an arbitrary number of attribute names to their values, where the values are represented as [attributevalue](#reference-attributevalue). 
+
+**Properties**
 
 |   |Type|Description|Required|
 |---|----|-----------|--------|
-|name of attribute as `string`|[`item`](#reference-item)|Id of the referenced bufferview.|No|
+|name of attribute as `string`|[`attributevalue`](#reference-attributevalue)|An [`attributevalue`](#reference-attributevalue) object, representing the attribute's value.|No|
 
 Each property of an `attributes` object corresponds to a key-value pair, further properties are not allowed.
+
+
+---------------------------------------
+<a name="reference-attributevalue"></a>
+### attributevalue
+
+Attribute values are very similar to [items](#reference-item), except that they can not reference attributes.
+
+**Properties**
+
+|   |Type|Description|Required|
+|---|----|-----------|--------|
+|**accessor**|`integer`|Index to referenced accessor.|No|
+|**typeHint**|`integer`|Index to referenced typehint.|No|
+|**value**|`any`|Embedded value.|No|
+
+Additional properties are allowed.
+
+#### attributevalue.accessor
+
+Index to referenced accessor. Both an embedded value and an accessor may be specified, in which case the embedded value serves as preview.
+
+* **Type**: `integer`
+* **Required**: No
+* **Minimum**: ` >= 0`
+
+#### attributevalue.typeHint
+
+Index to referenced typehint. **Should** be specified in case the type of the item can not be deduced from the representation of it's embedded value, or from the content type of the bufferview referenced by the accessor. 
+
+* **Type**: `integer`
+* **Required**: No
+
+#### attributevalue.value
+
+Embedded value.
+
+* **Type**: `any`
+* **Required**: No
 
 
 
@@ -797,7 +840,7 @@ Additional properties are allowed.
 Index to referenced accessor. Both an embedded value and an accessor may be specified, in which case the embedded value serves as preview.
 
 * **Type**: `integer`
-* **Required**: Yes
+* **Required**: No
 * **Minimum**: ` >= 0`
 
 #### item.attributes
