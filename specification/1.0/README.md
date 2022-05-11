@@ -966,13 +966,24 @@ Name of the typehint
 * **Type**: `string`
 * **Required**: Yes
 * **Supported values** (extensible):
-  * bitmap
   * boolean
-  * byte
   * char
   * color
+  * data
   * decimal
   * double
+  * guid
+  * image
+  * int8
+  * int16
+  * int32
+  * int64
+  * single
+  * string
+  * uint8
+  * uint16
+  * uint32
+  * uint64
   * geometry.arc
   * geometry.boundingbox
   * geometry.box
@@ -995,12 +1006,7 @@ Name of the typehint
   * geometry.transform
   * geometry.vector
   * grasshopper.path
-  * guid
-  * int16
-  * int32
-  * int64
   * rhino.arccurve
-  * rhino.beziercurve
   * rhino.brep
   * rhino.curve
   * rhino.extrusion
@@ -1012,9 +1018,6 @@ Name of the typehint
   * rhino.point
   * rhino.polycurve
   * rhino.polylinecurve
-  * sbyte
-  * single
-  * string
-  * uint16
-  * uint32
-  * uint64
+  * rhino.revsurface
+  * rhino.subd
+  * rhino.surface
