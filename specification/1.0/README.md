@@ -663,7 +663,7 @@ Attribute values are very similar to [items](#reference-item), except that they 
 |---|----|-----------|--------|
 |**accessor**|`integer`|Index to referenced accessor.|No|
 |**typeHint**|`integer`|Index to referenced typehint.|No|
-|**value**|`any`|Embedded value.|No|
+|**value**|`any`|Embedded value.|:white_check_mark: Yes|
 
 Additional properties are allowed.
 
@@ -677,10 +677,10 @@ Index to referenced accessor. Both an embedded value and an accessor may be spec
 
 #### attributevalue.typeHint
 
-Index to referenced typehint. **Should** be specified in case the type of the item can not be deduced from the representation of it's embedded value, or from the content type of the bufferview referenced by the accessor. 
+Index to referenced typehint.
 
 * **Type**: `integer`
-* **Required**: No
+* **Required**: Yes
 
 #### attributevalue.value
 
@@ -830,7 +830,7 @@ Data items serve as the leaves of trees defined by nodes. The actual data may be
 |---|----|-----------|--------|
 |**accessor**|`integer`|Index to referenced accessor.|No|
 |**attributes**|`integer`|Index to referenced attributes.|No|
-|**typeHint**|`integer`|Index to referenced typehint.|No|
+|**typeHint**|`integer`|Index to referenced typehint.|:white_check_mark: Yes|
 |**value**|`any`|Embedded value.|No|
 
 Additional properties are allowed.
@@ -852,10 +852,10 @@ Index to referenced attributes.
 
 #### item.typeHint
 
-Index to referenced typehint. **Should** be specified in case the type of the item can not be deduced from the representation of it's embedded value, or from the content type of the bufferview referenced by the accessor. 
+Index to referenced typehint.
 
 * **Type**: `integer`
-* **Required**: No
+* **Required**: Yes
 
 #### item.value
 
@@ -907,7 +907,7 @@ Optional name of node.
 
 #### node.nodes
 
-Array of indices of child nodes.
+Array of indices of child nodes. **Must not** reference itself.
 
 * **Type**: `integer[]`
 * **Required**: No
