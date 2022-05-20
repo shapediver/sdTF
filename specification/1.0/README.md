@@ -710,8 +710,8 @@ Attribute values are very similar to [items](#reference-item), except that they 
 |   |Type|Description|Required|
 |---|----|-----------|--------|
 |**accessor**|`integer`|Index to referenced accessor.|No|
-|**typeHint**|`integer`|Index to referenced typehint.|No|
-|**value**|`any`|Embedded value.|:white_check_mark: Yes|
+|**typeHint**|`integer`|Index to referenced typehint.|:white_check_mark: Yes|
+|**value**|`any`|Embedded value.|No|
 
 Additional properties are allowed.
 
