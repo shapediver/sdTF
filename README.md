@@ -15,5 +15,5 @@ Please provide spec feedback by submitting [issues](https://github.com/shapedive
 
 # Reference implementations
 
-  * SDK for JavaScript / TypeScript / node.js (will be published in April 2021)
-  * SDK for .NET (will be published in April 2021)
+  * [SDK for JavaScript / TypeScript / node.js](https://www.npmjs.com/package/@shapediver/sdk.sdtf-v1)
+  * SDK for .NET (available on request, will be published in Q4 2022)
