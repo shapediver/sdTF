@@ -1026,6 +1026,7 @@ Name of the typehint
   * int16
   * int32
   * int64
+  * json
   * single
   * string
   * uint8
@@ -1046,13 +1047,20 @@ Name of the typehint
   * geometry.matrix
   * geometry.plane
   * geometry.point
+  * geometry.point2d
+  * geometry.point3d
+  * geometry.point4d
   * geometry.polyline
   * geometry.ray
   * geometry.rectangle
   * geometry.sphere
   * geometry.torus
   * geometry.transform
+  * geometry.transformlist
   * geometry.vector
+  * geometry.vector2d
+  * geometry.vector3d
+  * geometry.vector4d
   * grasshopper.path
   * rhino.arccurve
   * rhino.brep
